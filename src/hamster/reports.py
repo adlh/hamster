@@ -295,8 +295,13 @@ class HTMLWriter(ReportWriter):
                         # Using python datetime formatting syntax. See:
                         # http://docs.python.org/library/time.html#time.strftime
                         C_("html report","%b %d, %Y"))
-            date_facts.append([str_date, by_date.get(date, [])])
+            # don't list ALL dates, but only those with activities
+            #date_facts.append([str_date, by_date.get(date, [])])
+            dfact = by_date.get(date, [])
+            if dfact:
+                date_facts.append([str_date, dfact])
             date += dt.timedelta(days=1)
+
 
 
         data = dict(
