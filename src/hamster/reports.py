@@ -276,6 +276,9 @@ class HTMLWriter(ReportWriter):
             duration_decimal = "%.2f" % (stuff.duration_minutes(fact.delta) / 60.0),
             description = fact.description or ""
         )
+        for key, val in data.iteritems():
+            if isinstance(val, basestring):
+                data[key] = stuff.locale_to_unicode(val)
         self.fact_rows.append(Template(self.fact_row_template).safe_substitute(data))
 
 

@@ -137,14 +137,17 @@ def zero_hour(date):
 # see bug 562298
 def locale_from_utf8(utf8_str):
     try:
-        retval = unicode (utf8_str, "utf-8").encode(locale.getpreferredencoding())
+        retval = unicode(utf8_str, "utf-8").encode(locale.getpreferredencoding())
     except:
         retval = utf8_str
     return retval
 
-def locale_to_utf8(locale_str):
+def locale_to_unicode(locale_str):
+    """ Return unicode string from locale settings """
+    lc = locale.getpreferredencoding()
     try:
-        retval = unicode (locale_str, locale.getpreferredencoding()).encode("utf-8")
+        #retval = unicode (locale_str, locale.getpreferredencoding()).encode("utf-8")
+        retval = unicode(locale_str, lc)
     except:
         retval = locale_str
     return retval
@@ -207,7 +210,7 @@ def dateDict(date, prefix = ""):
     res[prefix+"Z"] = date.strftime("%Z")
 
     for i, value in res.items():
-        res[i] = locale_to_utf8(value)
+        res[i] = locale_to_unicode(value)
 
     return res
 
