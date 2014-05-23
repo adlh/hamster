@@ -143,7 +143,7 @@
     <script type="text/javascript">
         var facts = $facts;
 
-        // for some weird reason, tags is an array like 
+        // for some weird reason, tags is an array like
         // ["t", "a", "g", ",", "", "t", "a", "g", "2"]
         // so fix tags by joining and spliting...
         for (var i=0; i < facts.length; i++) {
@@ -328,7 +328,7 @@
                 var factTotals = {}
                 for (var j in dateFacts[i][1]) {
                     var fact = dateFacts[i][1][j];
-                    // for some weird reason, tags is an array like 
+                    // for some weird reason, tags is an array like
                     // ["t", "a", "g", ",", "", "t", "a", "g", "2"]
                     // so fix tags by joining and spliting and joining again...
                     fact.tags = fact.tags.join('').split(',').join(", ");
@@ -444,13 +444,10 @@
             </div>
         </div>
     </div>
-
-
-
-    <p class="template-instructions">
-        <a href="file:///$data_dir/report_template.html">$show_template</a>.
-        $template_instructions.
-    </p>
 </div>
+<p class="template-instructions">
+    <a href="file:///$data_dir/report_template.html">$show_template</a>.
+    $template_instructions.
+</p>
 </body>
 </html>
